@@ -10,6 +10,7 @@ data = {
     "price_lakhs":   [8.5, 7.2, 6.0, 5.1, 4.3, 3.6, 3.0, 2.5, 2.1, 1.8, 7.8, 5.5, 3.4, 2.3, 8.8]
 }
 
+
 df = pd.DataFrame(data)
 
 # Separating independent features (Matrix X) and the dependent target variable (vector y)
@@ -47,7 +48,10 @@ print("=====================================================")
 # 🔮 REQUIREMENT 4: PREDICT PRICE FOR A NEW CAR (5 years old, 75k km)
 # =========================================================================
 # Creating a proper 2D DataFrame for the new car prediction to avoid warnings
-new_car = pd.DataFrame([[5, 75]], columns=["car_age_years", "km_driven_k"])
+new_car = pd.DataFrame(
+    [[5,75]],
+    columns=["car_age_years","km_driven_k"]
+)
 new_car_price = model.predict(new_car)[0]
 
 print(f"\n✨ Predicted Price for the new car (5 yrs old, 75k km): {new_car_price:.2f} Lakhs")
