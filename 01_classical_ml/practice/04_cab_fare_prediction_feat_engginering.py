@@ -41,7 +41,7 @@ df["is_weekend"] = df["day_of_week"].isin([5, 6]).astype(int)  # 5 = Saturday, 6
 
 
 # Fair per category
-df["fare_per_km category"] = pd.cut(
+df["distace_category"] = pd.cut(
     df["distance_km"],
     bins = [0, 8, 16, float("inf")],
     labels = ["Short", "Medium", "Long"]
@@ -81,6 +81,19 @@ print("Distance in km            : 10km")
 print("Day of week               : Wednesday")
 print("Is Weekend                : False")
 print(f"[Prediction] New Fare     : {new_fare:.2f}\n")
+
+
+# -------------------------------------------------------------------------
+# Comparing Training Score and Testing Score
+# -------------------------------------------------------------------------
+
+print("🔩 Comparing Training Score and Testing Score")
+train_score = linear_regression_model.score(X_train, y_train)
+test_score = linear_regression_model.score(X_test, y_test)
+
+print(f"Training Score :{train_score * 100:.2f}%")
+print(f"Testing Score  :{test_score * 100:.2f}%\n")
+
 
 # -------------------------------------------------------------------------
 # FULL REPORT OF THE MODEL WITH ALL RELEVANT NUMBERS
